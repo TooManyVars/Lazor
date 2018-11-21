@@ -66,12 +66,14 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Gameplay")
 	float roundsPerSecond = 0.1f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
+	float turnSensitivity = 1.5f;
+
 	//Sets a timer to fire a bullet every set period of time
 	void pullTrigger();
 
 	//Clears the timer which fires the bullet every set period of time.
 	void releaseTrigger();
-
 	
 	FTimerHandle rapidFireTimerHandle;
 };

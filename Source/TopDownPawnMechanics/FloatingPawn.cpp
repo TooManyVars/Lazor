@@ -44,6 +44,21 @@ void AFloatingPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+
+	//Code to update the player's rotation relative to the movement of the mouse.
+	AController * playerController = GetController();
+
+	//Get the vector for the intended rotation of the characte using the input axis values.
+	FVector lookVector(GetInputAxisValue("LookRight"), GetInputAxisValue("LookUp"), 0.0f);
+
+	//Get the length of the vector by doing the sqrt of x^2 + y^2
+	float lookVectorLength = FMath::Sqrt((lookVector.X*lookVector.X) + (lookVector.Y*lookVector.Y));
+
+	//If this length is above a certain amount, set the control rotation relative to the movement of the mouse along the x and y axis.
+	if (lookVectorLength > turnSensitivity)
+	{
+		playerController->SetControlRotation(lookVector.Rotation());
+	}
 }
 
 // Called to bind functionality to input
