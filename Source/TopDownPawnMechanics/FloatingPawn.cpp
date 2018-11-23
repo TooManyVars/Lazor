@@ -71,6 +71,9 @@ void AFloatingPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFloatingPawn::moveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFloatingPawn::moveRight);
 
+	PlayerInputComponent->BindAxis("LookUp", this, &AFloatingPawn::lookRight);
+	PlayerInputComponent->BindAxis("LookRight", this, &AFloatingPawn::lookUp);
+
 	//Input actions.
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFloatingPawn::pullTrigger);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &AFloatingPawn::releaseTrigger);
@@ -127,4 +130,14 @@ void AFloatingPawn::pullTrigger()
 void AFloatingPawn::releaseTrigger()
 {
 	GetWorld()->GetTimerManager().ClearTimer(rapidFireTimerHandle);
+}
+
+void AFloatingPawn::lookUp(float value)
+{
+
+}
+
+void AFloatingPawn::lookRight(float value)
+{
+
 }

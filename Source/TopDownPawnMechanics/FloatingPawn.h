@@ -63,6 +63,10 @@ public:
 	UFUNCTION()
 	void fire();
 
+	//These lookUp and lookRight functions don't actually have any function and simply act as an empty binding for the axis.
+	void lookUp(float value);
+	void lookRight(float value);
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Gameplay")
 	float roundsPerSecond = 0.1f;
 
