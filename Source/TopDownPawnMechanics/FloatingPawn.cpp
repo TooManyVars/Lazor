@@ -122,6 +122,9 @@ void AFloatingPawn::fire()
 
 void AFloatingPawn::pullTrigger()
 {
+	//Fire an inital shot before moving into the rapid fire sequence.
+	fire();
+
 	//Every n number of seconds, call the fire function, Leading to the player firing n rounds per second.
 	GetWorld()->GetTimerManager().SetTimer(rapidFireTimerHandle, this, &AFloatingPawn::fire, roundsPerSecond, true);
 }
