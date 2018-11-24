@@ -10,7 +10,6 @@
 #include "Bullet.h"
 
 
-
 // Sets default values
 AFloatingPawn::AFloatingPawn()
 {
@@ -93,7 +92,7 @@ void AFloatingPawn::moveRight(float value)
 
 void AFloatingPawn::fire()
 {
-	if (bulletType) //If bulletType isn't null
+	if (bulletType) //If bulletType isn't null.
 	{
 		//Get the world
 		UWorld * world = GetWorld();
