@@ -90,7 +90,7 @@ void AFloatingPawn::moveRight(float value)
 	AddMovementInput(FVector(0.0f, 1.0f, 0.0f), value);
 }
 
-void AFloatingPawn::fire()
+void AFloatingPawn::fire_Implementation()
 {
 	if (bulletType) //If bulletType isn't null.
 	{
@@ -143,3 +143,4 @@ void AFloatingPawn::lookRight(float value)
 {
 
 }
+

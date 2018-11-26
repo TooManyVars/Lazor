@@ -60,9 +60,11 @@ public:
 	TSubclassOf<class ABullet> bulletType;
 
 	//Spawns or "fires" a bullet.
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void fire();
-
+	void fire_Implementation();
+	
+	
 	//These lookUp and lookRight functions don't actually have any function and simply act as an empty binding for the axis.
 	void lookUp(float value);
 	void lookRight(float value);
