@@ -90,6 +90,25 @@ void AFloatingPawn::moveRight(float value)
 	AddMovementInput(FVector(0.0f, 1.0f, 0.0f), value);
 }
 
+void AFloatingPawn::deductHealth(float delta)
+{
+	health -= delta;
+	//Check if the player is dead afterwards.
+	//checkDead();
+}
+
+void AFloatingPawn::checkDead()
+{
+	if (health <= 0)
+	{
+		isDead = true;
+	}
+	else if (health > 0)
+	{
+		isDead = false;
+	}
+}
+
 void AFloatingPawn::fire_Implementation()
 {
 	if (bulletType) //If bulletType isn't null.
