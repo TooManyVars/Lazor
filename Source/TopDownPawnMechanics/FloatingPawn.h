@@ -33,6 +33,31 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class USpringArmComponent * cameraBoom;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Player")
+	float health = 1000.0f;
+
+	//Whether or not the player is dead.
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Player")
+	bool isDead;
+
+	//Vector which determines where to spawn bullets in relation to the player pawn.
+	//EditAnywhere means that you can edit variables like this both within the editor as a default value and within specific instances of the pawn in game.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
+	FVector muzzleOffset;
+
+	//The type of bullet to spawn.
+	//EditDefaults only means that this variable can only be edited within the BP as a default value.
+	UPROPERTY(EditDefaultsOnly, category = "Projectile")
+	TSubclassOf<class ABullet> bulletType;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Gameplay")
+	float roundsPerSecond = 0.1f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
+	float turnSensitivity = 1.5f;
+
+	FTimerHandle rapidFireTimerHandle;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -47,29 +72,12 @@ public:
 	void moveForward(float value);
 	void moveRight(float value);
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Player")
-	float health = 1000.0f;
-
-	//Whether or not the player is dead.
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Player")
-	bool isDead;
-
 	//Take health from the player based on a certain value.
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	virtual void deductHealth(float delta);
 
 	//Checks the player's health to see if they should be dead or not.
 	virtual void checkDead();
-
-	//Vector which determines where to spawn bullets in relation to the player pawn.
-	//EditAnywhere means that you can edit variables like this both within the editor as a default value and within specific instances of the pawn in game.
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
-	FVector muzzleOffset;
-
-	//The type of bullet to spawn.
-	//EditDefaults only means that this variable can only be edited within the BP as a default value.
-	UPROPERTY(EditDefaultsOnly, category = "Projectile")
-	TSubclassOf<class ABullet> bulletType;
 
 	//Spawns or "fires" a bullet.
 	UFUNCTION(BlueprintNativeEvent)
@@ -80,17 +88,9 @@ public:
 	void lookUp(float value);
 	void lookRight(float value);
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Gameplay")
-	float roundsPerSecond = 0.1f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
-	float turnSensitivity = 1.5f;
-
 	//Sets a timer to fire a bullet every set period of time
 	void pullTrigger();
 
 	//Clears the timer which fires the bullet every set period of time.
 	void releaseTrigger();
-	
-	FTimerHandle rapidFireTimerHandle;
 };
