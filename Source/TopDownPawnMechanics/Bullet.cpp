@@ -2,6 +2,7 @@
 
 #include "Bullet.h"
 #include "Engine.h"
+#include "Lazor.h"
 
 // Sets default values
 ABullet::ABullet()
@@ -13,6 +14,9 @@ ABullet::ABullet()
 	collisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BulletMesh"));
 	//attach mesh to rootcomponent.
 	RootComponent = collisionMesh;
+
+	sphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionSphere"));
+	sphereCollision->SetupAttachment(RootComponent);
 
 	//initialise the projectile movement componenet.
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
@@ -32,6 +36,9 @@ ABullet::ABullet()
 
 	// Die after 3 seconds.
 	InitialLifeSpan = 2.0f;
+
+	//Setup relevant box overlap event.
+	sphereCollision->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlapBegin);
 }
 
 // Called when the game starts or when spawned
@@ -57,5 +64,20 @@ void ABullet::shootInDirection(const FVector& shotDirection)
 	**/
 
 	ProjectileMovementComponent->Velocity = shotDirection * ProjectileMovementComponent->InitialSpeed;
+}
+
+void ABullet::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	//Cast the actor to our lazor.
+	ALazor * lazor = Cast<ALazor>(OtherActor);
+	//If the cast is valid
+	if (lazor)
+	{
+		//Log the collision
+		UE_LOG(LogTemp, Warning, TEXT("Bullet/Lazor collision detected: %s has been destroyed."), *lazor->GetName());
+
+		//Destroy the actor.
+		lazor->Destroy();
+	}	
 }
 

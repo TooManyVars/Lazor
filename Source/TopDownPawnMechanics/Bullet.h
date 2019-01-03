@@ -18,8 +18,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "projectile")
 	UStaticMeshComponent * collisionMesh;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "projectile")
+	class USphereComponent * sphereCollision;
+
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovementComponent;
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,4 +35,7 @@ public:
 
 	//Decide the direction in which to send the bullet when it is fired.
 	void shootInDirection(const FVector& shotDirection);
+
+	UFUNCTION()
+	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 };
