@@ -39,5 +39,5 @@ public:
 
 	//Move the lazor ever so slightly. doing this multiple times per second makes the lazor look like it's sliding across the screen.
 	UFUNCTION()
-		void moveLazor();
+	void moveLazor();
 };
