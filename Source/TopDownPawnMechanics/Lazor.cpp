@@ -4,6 +4,8 @@
 #include "Classes/Components/BoxComponent.h"
 #include "TimerManager.h"
 #include "Engine.h"
+#include "FloatingPawn.h"
+#include "IDamageableInterface.h"
 
 
 // Sets default values
