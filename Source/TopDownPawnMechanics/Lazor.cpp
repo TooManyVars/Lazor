@@ -34,7 +34,6 @@ void ALazor::BeginPlay()
 void ALazor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 

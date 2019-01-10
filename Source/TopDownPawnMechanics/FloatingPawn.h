@@ -34,7 +34,10 @@ public:
 	class USpringArmComponent * cameraBoom;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Player")
-	float health = 1000.0f;
+	float InitialHealth = 1000.0f;
+
+	UPROPERTY(BlueprintReadOnly, category = "Player")
+	float health;
 
 	//Whether or not the player is dead.
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Player")

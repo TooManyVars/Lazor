@@ -23,11 +23,15 @@ public:
 	class UBoxComponent * boxCollision;
 
 	//Dictates the speed of the lazors, aka how often times the moveLazor method is called in seconds;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, category = "Lazor")
 	float lazorSpeed = 0.0045f;
 
 	//Timer handle for the movement of the lazor.
 	FTimerHandle lazorMovementHandle;
+
+	//The amount of damage the lazor can do to the player.
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Lazor")
+	float Damage = 500;
 
 protected:
 	// Called when the game starts or when spawned

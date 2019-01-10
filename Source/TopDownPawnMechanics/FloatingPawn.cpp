@@ -30,6 +30,9 @@ AFloatingPawn::AFloatingPawn()
 
 	bulletLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("BulletLocation"));
 	bulletLocation->SetupAttachment(RootComponent);
+
+	//Setup the health.
+	health = InitialHealth;
 	
 }
 // Called when the game starts or when spawned
