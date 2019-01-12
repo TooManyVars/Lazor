@@ -97,7 +97,7 @@ void AFloatingPawn::deductHealth(float delta)
 {
 	health -= delta;
 	//Check if the player is dead afterwards.
-	//checkDead();
+	checkDead();
 }
 
 void AFloatingPawn::checkDead()

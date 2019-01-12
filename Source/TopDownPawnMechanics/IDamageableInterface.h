@@ -24,7 +24,6 @@ class TOPDOWNPAWNMECHANICS_API IIDamageableInterface
 public:
 	
 	//Damages the player. can be expanded upon in blueprint if nessecary.
-	UFUNCTION(BlueprintNativeEvent, category = "IDamageableInterface")
-	void takeDamage(class AFloatingPawn * player, float amount);
-	void takeDamage_Implementation(class AFloatingPawn * player, float amount);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, category = "IDamageableInterface")
+	void takeDamage(float amount);
 };

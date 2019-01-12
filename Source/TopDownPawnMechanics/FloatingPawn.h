@@ -36,7 +36,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Player")
 	float InitialHealth = 1000.0f;
 
-	UPROPERTY(BlueprintReadOnly, category = "Player")
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, category = "Player")
 	float health;
 
 	//Whether or not the player is dead.

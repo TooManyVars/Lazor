@@ -21,6 +21,8 @@ ALazor::ALazor()
 
 	boxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
 	boxCollision->SetupAttachment(RootComponent);
+	//Bind OnOverlap Event to the lazor's box collision componenent;
+	boxCollision->OnComponentBeginOverlap.AddDynamic(this, &ALazor::OnOverlapBegin);
 }
 
 // Called when the game starts or when spawned
@@ -49,4 +51,25 @@ void ALazor::moveLazor()
 	//Now, all we need to do is set teleport the actor to this new location.
 	SetActorLocation(newActorLocation);
 	//After this point, we need to set a timer so that this is done n number of times when beginplay starts.
+}
+
+void ALazor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	//Check whether what collided with the lazor was a player
+	//AFloatingPawn * player = Cast<AFloatingPawn>(OtherActor);
+	//if (player)
+	//{
+	//	//I HAVENT CHECKED IF (60-67 works yet) -  BE WEARY.//
+	//	IIDamageableInterface * implementationCheck = Cast<IIDamageableInterface>(player);
+
+	//	if (implementationCheck)
+	//	{
+	//		//make the player take damage(don't call the function directly, use the Execute_function() call.
+	//		implementationCheck->Execute_takeDamage(player, player, Damage);
+	//	}
+
+		//If the lazor collided with the player check if it implements the IDamageble interface(it will, but this is good practice)
+		//UKismetSystemLibrary::DoesImplementInterface(player, IIDamageableInterface::takeDamage());
+		//Make the player take damage using the takeDamage function.
+	//}
 }
