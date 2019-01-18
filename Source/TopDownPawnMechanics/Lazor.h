@@ -29,6 +29,10 @@ public:
 	//Timer handle for the movement of the lazor.
 	FTimerHandle lazorMovementHandle;
 
+	//FX to play when the lazor is destroyed.
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, category = "Lazor")
+	void playDeathFX();
+
 	//The amount of damage the lazor can do to the player.
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, category = "Lazor")
 	float Damage = 500;

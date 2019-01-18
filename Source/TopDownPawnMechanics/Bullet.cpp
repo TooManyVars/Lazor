@@ -76,6 +76,9 @@ void ABullet::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Othe
 		//Log the collision
 		UE_LOG(LogTemp, Warning, TEXT("Bullet/Lazor collision detected: %s has been destroyed."), *lazor->GetName());
 
+		//Play the lazor's death FX.
+		lazor->playDeathFX();
+
 		//Destroy the lazor.
 		lazor->Destroy();
 

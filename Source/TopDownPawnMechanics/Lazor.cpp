@@ -55,21 +55,5 @@ void ALazor::moveLazor()
 
 void ALazor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	//Check whether what collided with the lazor was a player
-	//AFloatingPawn * player = Cast<AFloatingPawn>(OtherActor);
-	//if (player)
-	//{
-	//	//I HAVENT CHECKED IF (60-67 works yet) -  BE WEARY.//
-	//	IIDamageableInterface * implementationCheck = Cast<IIDamageableInterface>(player);
 
-	//	if (implementationCheck)
-	//	{
-	//		//make the player take damage(don't call the function directly, use the Execute_function() call.
-	//		implementationCheck->Execute_takeDamage(player, player, Damage);
-	//	}
-
-		//If the lazor collided with the player check if it implements the IDamageble interface(it will, but this is good practice)
-		//UKismetSystemLibrary::DoesImplementInterface(player, IIDamageableInterface::takeDamage());
-		//Make the player take damage using the takeDamage function.
-	//}
 }
