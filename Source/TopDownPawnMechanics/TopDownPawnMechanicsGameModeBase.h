@@ -13,8 +13,7 @@ UCLASS()
 class TOPDOWNPAWNMECHANICS_API ATopDownPawnMechanicsGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
-	
+
 	
 	
 };
