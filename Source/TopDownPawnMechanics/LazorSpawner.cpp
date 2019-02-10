@@ -4,7 +4,7 @@
 #include "Classes/Components/BoxComponent.h"
 #include "Engine.h"
 #include "Lazor.h"
-
+#include "EngineUtils.h"
 
 // Sets default values
 ALazorSpawner::ALazorSpawner()
@@ -32,5 +32,9 @@ void ALazorSpawner::Tick(float DeltaTime)
 
 void ALazorSpawner::spawnLazor(FRotator rotation)
 {
+	//Firstly, get all actors of type lazorType.
+	//TArray<LazorClass*>Lazors;
+
+	//getAllActorsOfClass(GetWorld(), Lazors);
 }
 

@@ -43,6 +43,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Player")
 	bool isDead;
 
+	//Whether the player can spawn lazors or not(used only in debug)
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Debug")
+	bool bCanSpawnLazors;
+
 	//Vector which determines where to spawn bullets in relation to the player pawn.
 	//EditAnywhere means that you can edit variables like this both within the editor as a default value and within specific instances of the pawn in game.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Gameplay")
